@@ -1,0 +1,38 @@
+int delayTime = 2000;
+#define ir 3
+#define led 4
+
+void setup()
+{
+pinMode(8, OUTPUT);
+pinMode(9, OUTPUT);
+pinMode(led,OUTPUT);
+pinMode(ir,INPUT);
+Serial.begin(9600);
+}
+
+void loop() 
+{
+int ir1=digitalRead(ir);
+if(ir1==LOW)
+{
+digitalWrite(8, LOW);
+digitalWrite(9, HIGH);
+delay(delayTime);
+digitalWrite(9, LOW);
+digitalWrite(8, HIGH);
+delay(delayTime);
+}
+else
+{
+digitalWrite(9, LOW);
+digitalWrite(8, LOW);
+delay(delayTime); 
+digitalWrite(led,HIGH);
+delay(1000);
+digitalWrite(led,LOW);
+Serial.print("ENEMIES AHEAD!!! FIRE!!!");
+delay(1000);
+}
+     
+}
